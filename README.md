@@ -40,6 +40,8 @@ In your browser, visit [locol](http://localhost:3000/) to see the website.
 
 ## Screenshots
 
+![image](https://github.com/PT-HUANG/alpha-shop/blob/main/cover.png)
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details

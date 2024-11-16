@@ -4,7 +4,7 @@
 
 ## Features
 
-- 目前完成了左側表單的元件拆分，其他部份暫時由AC提供的HTML以及CSS，透過converter轉換為.jsx格式。
+- 目前完成了左側表單的元件拆分，以及右側購物車的元件拆分&渲染，並能自動計算出總金額
 
 ## Environment requirements
 
@@ -40,7 +40,7 @@ In your browser, visit [locol](http://localhost:3000/) to see the website.
 
 ## Screenshots
 
-![image](https://github.com/PT-HUANG/alpha-shop/blob/main/cover.png)
+![image]()
 
 ## License
 

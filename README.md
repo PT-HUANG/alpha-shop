@@ -40,7 +40,7 @@ In your browser, visit [locol](http://localhost:3000/) to see the website.
 
 ## Screenshots
 
-![image]()
+![image](https://github.com/PT-HUANG/alpha-shop/blob/main/cover.png)
 
 ## License
 

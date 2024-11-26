@@ -39,7 +39,7 @@ $ npm install
 $ npm run dev
 ```
 
-In your browser, visit [locol](http://localhost:3000/) to see the website.
+In your browser, visit (http://localhost:3000/) to see the website.
 
 ## Screenshots
 

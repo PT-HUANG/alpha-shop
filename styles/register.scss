@@ -1,3 +1,5 @@
+@use './base.scss' as *;
+
 %done-phase {
     .icon {
         display: inline-block;
@@ -37,7 +39,7 @@
 }
 %done-icon {
     color: var(--progress-done-color);
-    background-color: transparent;
+    background-color: black;
     @extend %done-phase;
 }
 
@@ -145,6 +147,24 @@ $phase-map: (1: 'address', 2: 'shipping', 3: 'credit-card');
                 }
 
                 @if $phase == 'address' {
+                    .progress-icon {
+                        background-color: var(--pg-addr-bg-color);
+                        border-color: var(--pg-addr-bg-color);
+                        .text {
+                            color: var(--pg-addr-color);
+                        }
+                    }
+                }
+                @if $phase == 'shipping' and $index == 2 {
+                    .progress-icon {
+                        background-color: var(--pg-addr-bg-color);
+                        border-color: var(--pg-addr-bg-color);
+                        .text {
+                            color: var(--pg-addr-color);
+                        }
+                    }
+                }
+                @if $phase == 'credit-card' and $index == 3 {
                     .progress-icon {
                         background-color: var(--pg-addr-bg-color);
                         border-color: var(--pg-addr-bg-color);

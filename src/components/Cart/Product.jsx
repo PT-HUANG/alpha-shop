@@ -1,4 +1,4 @@
-export default function Product({id, name, img, price, quantity}){
+export default function Product({id, name, img, price, quantity, handlePlusMinus}){
   return (
     <div
             className="product-container col col-12"
@@ -13,15 +13,41 @@ export default function Product({id, name, img, price, quantity}){
         <div className="product-name">{name}</div>
         <div className="product-control-container">
           <div className="product-control">
-            <object
+            <button
               className="product-action minus"
-              data="./public/icons/minus.svg"
-            />
+              id={id}
+              onClick={handlePlusMinus}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '0',
+                cursor: 'pointer',
+              }}
+            >
+              <img
+                src="./public/icons/minus.svg"
+                alt="Minus"
+                className="icon"
+              />
+            </button>
             <span className="product-count">{quantity}</span>
-            <object
-              className="product-action minus"
-              data="./public/icons/plus.svg"
-            />
+            <button
+              className="product-action plus"
+              id={id}
+              onClick={handlePlusMinus}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '0',
+                cursor: 'pointer',
+              }}
+            >
+              <img
+                src="./public/icons/plus.svg"
+                alt="Plus"
+                className="icon"
+              />
+            </button>
           </div>
         </div>
         <div className="price">${price}</div>

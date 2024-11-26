@@ -2,7 +2,7 @@ export default function Step2() {
     return (
         <>
         {/* shipping phase */}
-        <form className="col col-12" data-phase="shipping">
+        <form className="col col-12">
           <h3 className="form-title">運送方式</h3>
           <section className="form-body col col-12">
             <label className="radio-group col col-12" data-price={0}>

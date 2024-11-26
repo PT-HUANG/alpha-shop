@@ -2,7 +2,7 @@ export default function Step1() {
     return (
         <>
         {/* address phase */}
-        <form className="col col-12" data-phase="address">
+        <form className="col col-12">
           <h3 className="form-title">寄送地址</h3>
           <section className="form-body col col-12">
               <div className="col col-12">

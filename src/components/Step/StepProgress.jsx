@@ -1,4 +1,4 @@
-export default function StepProgress() {
+export default function StepProgress({phase}) {
     return (
         <>
         {/* register-progress */}

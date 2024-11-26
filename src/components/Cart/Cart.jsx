@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Product from "./Product";
 
 const productList = [
@@ -18,18 +19,35 @@ const productList = [
 ]
 
 export default function Cart() {
+  const [products, setProducts] = useState(productList)
+  function handlePlusMinus(e) {
+    let newProducts = products.map(product => {
+      if(product.id === e.currentTarget.id) {
+        return {
+          ...product,
+          quantity: (e.currentTarget.className.includes('plus') ? product.quantity+1 : product.quantity-1)
+        }
+      } else return product
+    })
+    newProducts = newProducts.filter(product => product.quantity > 0)
+    setProducts(newProducts)
+  }
   return (
     <>
       {/* cart */}
       <section className="cart-container col col-lg-5 col-sm-12">
         <h3 className="cart-title">購物籃</h3>
         <section className="product-list col col-12" data-total-price={0}>
-          {productList.map(item =>
-            <Product {...item} key={item.id}/>
+          {products.map(item =>
+            <Product 
+              {...item} 
+              key={item.id}
+              handlePlusMinus={handlePlusMinus}
+            />
           )}
         </section>
         <Shipping />
-        <Total />
+        <Total products={products}/>
       </section>
     </>
   );
@@ -44,12 +62,12 @@ function Shipping() {
   );
 }
 
-function Total() {
+function Total({products}) {
   return (
     <section className="cart-info total col col-12">
       <div className="text">小計</div>
       <div className="price">
-        $<TotalPrice data={productList}/>
+        $<TotalPrice data={products}/>
       </div>
     </section>
   );

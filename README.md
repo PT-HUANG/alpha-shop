@@ -45,8 +45,8 @@ In your browser, visit (http://localhost:3000/) to see the website.
 
 ## Screenshots
 
-![image]()
-![image]()
+![image](https://github.com/PT-HUANG/alpha-shop/blob/main/screenshot_light_mode.png)
+![image](https://github.com/PT-HUANG/alpha-shop/blob/main/screenshot_dark_mode.png)
 
 ## License
 

@@ -110,6 +110,14 @@ label.burger-container {
     height: 24px;
 }
 
+// search, cart, moon
+.nav-item {
+  .icons {
+    border: none;
+    background-color: inherit;
+  }
+}
+
 @media screen and (max-width: $screen-break-point){
     :root {
         --header-height: 56px;

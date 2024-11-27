@@ -7,6 +7,17 @@
     .text {
         display: none;
     }
+    .check {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        color: inherit;
+    }
 }
 %undone-phase {
     .icon {
@@ -14,6 +25,9 @@
     }
     .text {
         display: inline-block;
+    }
+    .check {
+        display: none;
     }
 }
 %current-text {

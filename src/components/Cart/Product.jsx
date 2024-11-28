@@ -1,4 +1,7 @@
-export default function Product({id, name, img, price, quantity, handlePlusMinus}){
+import { getPlusMinus } from "../../context/CartContext";
+
+export default function Product({ id, name, img, price, quantity }){
+  const handlePlusMinus = getPlusMinus();
   return (
     <div
             className="product-container col col-12"

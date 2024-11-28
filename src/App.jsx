@@ -1,7 +1,6 @@
-import "../styles/main.scss";
-import Step from "./components/Step/Step.jsx";
+import '../styles/main.scss';
+import Step from './components/Step/Step.jsx';
 import { useState } from 'react';
-
 
 function App() {
   const [theme, setTheme] = useState('light');

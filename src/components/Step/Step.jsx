@@ -5,6 +5,7 @@ import Step3 from "./Step3";
 import ProgressControl from "./ProgressControl";
 import Cart from "../Cart/Cart";
 import { useState } from "react";
+import { ProductProvider } from "../../context/CartContext"
 
 function FormContainer({children}) {
   return (
@@ -55,7 +56,9 @@ export default function Step() {
         </FormContainer>
       </RegisterContainer>
       {/* cart */}
-      <Cart />
+      <ProductProvider>
+        <Cart />
+      </ProductProvider>
       {/* progress-control */}
       <ProgressControl 
         handleClick={handleClick}

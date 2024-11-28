@@ -1,14 +1,11 @@
 import '../styles/main.scss';
 import Step from './components/Step/Step.jsx';
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useTheme, useToggleTheme } from './context/ThemeContext.jsx';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  function toggleTheme() {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.body.setAttribute('data-theme', newTheme);
-  }
+  const theme = useTheme();
+  const toggleTheme = useToggleTheme();
   return (
     <>
       <meta charSet="UTF-8" />

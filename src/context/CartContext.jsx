@@ -47,6 +47,6 @@ export function getProducts() {
   return useContext(CartContext).products
 }
 
-export function getPlusMinus() {
+export function usePlusMinus() {
   return useContext(CartContext).function
 }

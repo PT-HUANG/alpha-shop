@@ -1,7 +1,8 @@
 import '../styles/main.scss';
 import Step from './components/Step/Step.jsx';
-// import { useState } from 'react';
 import { useTheme, useToggleTheme } from './context/ThemeContext.jsx';
+import { ProductProvider } from "./context/CartContext";
+import { FormDataProvider } from "./context/SheetContext";
 
 function App() {
   const theme = useTheme();
@@ -94,7 +95,11 @@ function App() {
         {/* main */}
         <main className="site-main">
           <div className="main-container">
-            <Step />
+            <ProductProvider>
+              <FormDataProvider>
+                <Step />
+              </FormDataProvider>
+            </ProductProvider>
           </div>
         </main>
         {/* footer */}

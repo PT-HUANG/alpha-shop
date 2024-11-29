@@ -1,4 +1,4 @@
-export default function ProgressControl({handleClick, currentStep}) {
+export default function ProgressControl({handleClick, handleConsole, currentStep}) {
   return (
     <>
       <section className="progress-control-container col col-lg-6 col-sm-12">
@@ -17,7 +17,7 @@ export default function ProgressControl({handleClick, currentStep}) {
             }
             <button 
               className="next"
-              onClick={handleClick}
+              onClick={currentStep === 3 ? handleConsole : handleClick}
             >
               {currentStep === 3 ? '確認下單' : '下一步'}
               <object

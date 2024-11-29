@@ -1,5 +1,5 @@
 import Product from "./Product";
-import { getProducts } from "../../context/CartContext";
+import { getProducts, getTotal } from "../../context/CartContext";
 
 export default function Cart() {
   const products = getProducts()
@@ -17,7 +17,7 @@ export default function Cart() {
           )}
         </section>
         <Shipping />
-        <Total products={products}/>
+        <Total />
       </section>
     </>
   );
@@ -32,21 +32,14 @@ function Shipping() {
   );
 }
 
-function Total({products}) {
+function Total() {
+  const total = getTotal()
   return (
     <section className="cart-info total col col-12">
       <div className="text">小計</div>
       <div className="price">
-        $<TotalPrice data={products}/>
+        ${total}
       </div>
     </section>
   );
-}
-
-function TotalPrice({data}) {
-  let sum = 0
-  data.forEach(item => {
-    sum += item.price * item.quantity
-  });
-  return sum
 }

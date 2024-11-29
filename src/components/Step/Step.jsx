@@ -1,11 +1,13 @@
+import { useState } from "react";
 import StepProgress from "./StepProgress";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import ProgressControl from "./ProgressControl";
 import Cart from "../Cart/Cart";
-import { useState } from "react";
-import { ProductProvider } from "../../context/CartContext"
+import { getTotal } from "../../context/CartContext";
+import { useFormData, useResetFormData  } from "../../context/SheetContext"
+
 
 function FormContainer({children}) {
   return (
@@ -28,6 +30,10 @@ function RegisterContainer({children, phase}) {
 
 export default function Step() {
   const [stepPhase, setStepPhase] = useState(1)
+  const total = getTotal()
+  const formData = useFormData()
+  const resetFormData = useResetFormData()
+
   function handleClick(e){
     if(e.target.className.includes('next')) {
       if(stepPhase === 3) {
@@ -38,6 +44,21 @@ export default function Step() {
       setStepPhase(stepPhase - 1)
     }
   }
+
+  function handleConsole(){
+    const temp = `
+      總金額：${total}
+      姓名： ${formData.cardName}
+      卡號： ${formData.cardNumber}
+      有效日期： ${formData.expiryDate}
+      CVC: ${formData.cvc}
+    `
+    if(stepPhase === 3){
+      alert(temp)
+      resetFormData()
+    }
+  }
+
   return (
     <>
       {/* register */}
@@ -46,22 +67,21 @@ export default function Step() {
         <h2 className="register-title col col-12">結帳</h2>
         <StepProgress currentStep={stepPhase}/>
         {/* register-form */}
-        <FormContainer>
-          {/* address phase */}
-          {stepPhase === 1 && <Step1 />}
-          {/* shipping phase */}
-          {stepPhase === 2 && <Step2 />}
-          {/* credit-card phase */}
-          {stepPhase === 3 && <Step3 />}
-        </FormContainer>
+          <FormContainer>
+            {/* address phase */}
+            {stepPhase === 1 && <Step1 />}
+            {/* shipping phase */}
+            {stepPhase === 2 && <Step2 />}
+            {/* credit-card phase */}
+            {stepPhase === 3 && <Step3 />}
+          </FormContainer>
       </RegisterContainer>
       {/* cart */}
-      <ProductProvider>
-        <Cart />
-      </ProductProvider>
+      <Cart />
       {/* progress-control */}
       <ProgressControl 
         handleClick={handleClick}
+        handleConsole={handleConsole}
         currentStep={stepPhase}
       />
     </>

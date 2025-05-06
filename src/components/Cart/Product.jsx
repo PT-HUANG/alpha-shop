@@ -1,17 +1,11 @@
-import { usePlusMinus } from "../../context/CartContext";
-
-export default function Product({ id, name, img, price, quantity }){
-  const handlePlusMinus = usePlusMinus();
+export default function Product({ id, name, img, price, quantity }) {
   return (
     <div
-            className="product-container col col-12"
-            data-count={quantity}
-            data-price={price}
-          >
-      <img
-        className="img-container"
-        src={img}
-      />
+      className="product-container col col-12"
+      data-count={quantity}
+      data-price={price}
+    >
+      <img className="img-container" src={img} />
       <div className="product-info">
         <div className="product-name">{name}</div>
         <div className="product-control-container">
@@ -19,12 +13,11 @@ export default function Product({ id, name, img, price, quantity }){
             <button
               className="product-action minus"
               id={id}
-              onClick={handlePlusMinus}
               style={{
-                background: 'none',
-                border: 'none',
-                padding: '0',
-                cursor: 'pointer',
+                background: "none",
+                border: "none",
+                padding: "0",
+                cursor: "pointer",
               }}
             >
               <img
@@ -37,19 +30,14 @@ export default function Product({ id, name, img, price, quantity }){
             <button
               className="product-action plus"
               id={id}
-              onClick={handlePlusMinus}
               style={{
-                background: 'none',
-                border: 'none',
-                padding: '0',
-                cursor: 'pointer',
+                background: "none",
+                border: "none",
+                padding: "0",
+                cursor: "pointer",
               }}
             >
-              <img
-                src="./public/icons/plus.svg"
-                alt="Plus"
-                className="icon"
-              />
+              <img src="./public/icons/plus.svg" alt="Plus" className="icon" />
             </button>
           </div>
         </div>

@@ -26,6 +26,14 @@ header.site-header {
     }
 }
 
+nav.navbar-menu[data-theme='light'] {
+    background-color: white;
+}
+
+nav.navbar-menu[data-theme='dark'] {
+    background-color: black;
+}
+
 nav.navbar-menu {
     display: flex;
     flex-grow: 1;

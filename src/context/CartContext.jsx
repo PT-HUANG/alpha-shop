@@ -1,76 +1,54 @@
-import { useState, createContext, useContext, useEffect } from 'react';
+import { useState, createContext, useContext, useEffect } from "react";
+
+// 0. 有預設的資料 => useState products, setProducts
+// 1. 能夠計算總金額 => useState total, setTotal
+// 2. 數目=0的時候自動消失 => handleMinusPlus
+// handlePlus
+// handleMinus
+// handleDelete
+// handleCountTotal
 
 const productList = [
   {
-    id: '1',
-    name: '破壞補丁修身牛仔褲',
-    img: './public/images/product-1.jpg',
+    id: "1",
+    name: "破壞補丁修身牛仔褲",
+    img: "./public/images/product-1.jpg",
     price: 3999,
     quantity: 1,
   },
   {
-    id: '2',
-    name: '刷色直筒牛仔褲',
-    img: './public/images/product-2.jpg',
+    id: "2",
+    name: "刷色直筒牛仔褲",
+    img: "./public/images/product-2.jpg",
     price: 1299,
     quantity: 1,
   },
-]
+];
 
-let initialTotal = 0
-productList.forEach(item => {
-  initialTotal += item.price * item.quantity
+let defaultTotal = 0;
+productList.forEach((product) => {
+  defaultTotal += product.price;
 });
 
-const ProductsContext = createContext();
-const ToggleContext = createContext();
-const TotalContext = createContext();
+const defaultCartContext = {
+  productList,
+  defaultTotal,
+  handleMinusPlus: null,
+};
 
-export function ProductProvider({children}) {
+const CartContext = createContext(defaultCartContext);
+
+export const CartProvider = ({ children }) => {
   const [products, setProducts] = useState(productList);
-  const [total, setTotal] = useState(initialTotal);
+  const [total, setTotal] = useState(defaultTotal);
 
-  function handlePlusMinus(e) {
-    let newProducts = products.map(product => {
-      if(product.id === e.currentTarget.id) {
-        return {
-          ...product,
-          quantity: (e.currentTarget.className.includes('plus') ? product.quantity + 1 : product.quantity - 1)
-        }
-      } else return product
-    })
-    newProducts = newProducts.filter(product => product.quantity > 0)
-    setProducts(newProducts)
-  }
-
-  useEffect(() => {
-    let sum = 0;
-    products.forEach(item => {
-      sum += item.price * item.quantity;
-    });
-    setTotal(sum);
-  }, [products]);
-
-
-  return(
-    <ProductsContext.Provider value={products}>
-      <ToggleContext.Provider value={handlePlusMinus}>
-        <TotalContext.Provider value={total}>
-          {children}
-          </TotalContext.Provider>
-      </ToggleContext.Provider>
-    </ProductsContext.Provider>
+  return (
+    <CartContext.Provider value={{ products, total, handleMinusPlus: null }}>
+      {children}
+    </CartContext.Provider>
   );
-}
+};
 
-export function getProducts() {
-  return useContext(ProductsContext)
-}
-
-export function usePlusMinus() {
-  return useContext(ToggleContext)
-}
-
-export function getTotal() {
-  return useContext(TotalContext)
-}
+export const useCart = () => {
+  return useContext(CartContext);
+};

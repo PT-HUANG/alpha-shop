@@ -1,20 +1,17 @@
 import Product from "./Product";
-import { getProducts, getTotal } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 export default function Cart() {
-  const products = getProducts()
+  const { products } = useCart();
   return (
     <>
       {/* cart */}
       <section className="cart-container col col-lg-5 col-sm-12">
-        <h3 className="cart-title">購物籃</h3>
+        <h3 className="cart-title">購物車</h3>
         <section className="product-list col col-12" data-total-price={0}>
-          {products.map(item =>
-            <Product 
-              {...item} 
-              key={item.id}
-            />
-          )}
+          {products.map((item) => (
+            <Product key={item.id} {...item} />
+          ))}
         </section>
         <Shipping />
         <Total />
@@ -33,13 +30,11 @@ function Shipping() {
 }
 
 function Total() {
-  const total = getTotal()
+  const { total } = useCart();
   return (
     <section className="cart-info total col col-12">
       <div className="text">小計</div>
-      <div className="price">
-        ${total}
-      </div>
+      <div className="price">${total}</div>
     </section>
   );
 }

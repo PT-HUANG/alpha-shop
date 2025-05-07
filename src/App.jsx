@@ -57,7 +57,7 @@ function App() {
               {/* search */}
               <li className="nav-item">
                 <img
-                  src="/icons/search.svg"
+                  src="icons/search.svg"
                   className="nav-icon cursor-point"
                   type="image/svg+xml"
                 ></img>
@@ -65,7 +65,7 @@ function App() {
               {/* cart */}
               <li className="nav-item">
                 <img
-                  src="/icons/cart.svg"
+                  src="icons/cart.svg"
                   className="nav-icon cursor-point"
                   type="image/svg+xml"
                 ></img>
@@ -75,9 +75,7 @@ function App() {
                 {/* moon */}
                 <button className="icons">
                   <img
-                    src={
-                      theme === "light" ? "/icons/moon.svg" : "/icons/sun.svg"
-                    }
+                    src={theme === "light" ? "icons/moon.svg" : "icons/sun.svg"}
                     className="nav-icon cursor-point"
                     type="image/svg+xml"
                     onClick={toggleTheme}
@@ -88,7 +86,7 @@ function App() {
           </nav>
           {/* logo */}
           <a className="header-logo-container" href="#">
-            <img src="/icons/logo.svg" className="cursor-point" />
+            <img src="icons/logo.svg" className="cursor-point" />
           </a>
         </div>
       </header>
@@ -105,7 +103,7 @@ function App() {
         <div className="footer-container">
           <section className="footer-section">
             <div className="footer-logo-container">
-              <img src="/icons/logo.svg" className="cursor-point" />
+              <img src="icons/logo.svg" className="cursor-point" />
             </div>
           </section>
           <section className="footer-section">

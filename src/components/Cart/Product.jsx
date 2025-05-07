@@ -27,11 +27,7 @@ export default function Product({ id, name, img, price, quantity }) {
                 cursor: "pointer",
               }}
             >
-              <img
-                src="./public/icons/minus.svg"
-                alt="Minus"
-                className="icon"
-              />
+              <img src="icons/minus.svg" alt="Minus" className="icon" />
             </button>
             <span className="product-count">{quantity}</span>
             <button
@@ -47,7 +43,7 @@ export default function Product({ id, name, img, price, quantity }) {
                 cursor: "pointer",
               }}
             >
-              <img src="./public/icons/plus.svg" alt="Plus" className="icon" />
+              <img src="icons/plus.svg" alt="Plus" className="icon" />
             </button>
           </div>
         </div>

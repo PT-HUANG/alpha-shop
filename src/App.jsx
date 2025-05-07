@@ -20,7 +20,7 @@ function App() {
           <input id="navbar-toggle" className="navbar-toggle" type="checkbox" />
           <label htmlFor="navbar-toggle" className="burger-container">
             <object
-              data="/icons/toggle.svg"
+              data="icons/toggle.svg"
               className="icon-toggle cursor-point"
             />
           </label>
@@ -157,15 +157,15 @@ function App() {
               <div className="tel-info">+886 02123-45678</div>
               <div className="social-icon-group">
                 <object
-                  data="/icons/facebook.svg"
+                  data="icons/facebook.svg"
                   className="social-icon cursor-point"
                 ></object>
                 <object
-                  data="/icons/instagram.svg"
+                  data="icons/instagram.svg"
                   className="social-icon cursor-point"
                 ></object>
                 <object
-                  data="/icons/whatsapp.svg"
+                  data="icons/whatsapp.svg"
                   className="social-icon cursor-point"
                 ></object>
               </div>

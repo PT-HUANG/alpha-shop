@@ -4,14 +4,14 @@ const productList = [
   {
     id: "1",
     name: "破壞補丁修身牛仔褲",
-    img: "public/images/product-1.jpg",
+    img: "images/product-1.jpg",
     price: 3999,
     quantity: 1,
   },
   {
     id: "2",
     name: "刷色直筒牛仔褲",
-    img: "public/images/product-2.jpg",
+    img: "images/product-2.jpg",
     price: 1299,
     quantity: 1,
   },

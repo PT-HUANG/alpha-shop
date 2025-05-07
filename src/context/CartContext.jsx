@@ -1,13 +1,5 @@
 import { useState, createContext, useContext, useEffect } from "react";
 
-// 0. 有預設的資料 => useState products, setProducts
-// 1. 能夠計算總金額 => useState total, setTotal
-// 2. 數目=0的時候自動消失 => handleMinusPlus
-// handlePlus
-// handleMinus
-// handleDelete
-// handleCountTotal
-
 const productList = [
   {
     id: "1",
@@ -25,25 +17,66 @@ const productList = [
   },
 ];
 
-let defaultTotal = 0;
-productList.forEach((product) => {
-  defaultTotal += product.price;
-});
-
 const defaultCartContext = {
   productList,
-  defaultTotal,
-  handleMinusPlus: null,
+  defaultTotal: null,
+  handlePlus: null,
+  handleMinus: null,
 };
 
 const CartContext = createContext(defaultCartContext);
 
 export const CartProvider = ({ children }) => {
   const [products, setProducts] = useState(productList);
-  const [total, setTotal] = useState(defaultTotal);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const newTotal = products.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotal(newTotal);
+  }, [products]);
+
+  const handleDelete = (deleteId) => {
+    const nextProducts = products.filter((product) => product.id !== deleteId);
+    setProducts(nextProducts);
+  };
 
   return (
-    <CartContext.Provider value={{ products, total, handleMinusPlus: null }}>
+    <CartContext.Provider
+      value={{
+        products,
+        total,
+        handlePlus: (id) => {
+          const nextProducts = products.map((product) => {
+            if (product.id === id) {
+              return {
+                ...product,
+                quantity: product.quantity + 1,
+              };
+            } else return product;
+          });
+          setProducts(nextProducts);
+        },
+        handleMinus: (id) => {
+          const { quantity } = products.find((product) => product.id === id);
+          if (quantity === 1) {
+            handleDelete(id);
+            return;
+          }
+          const nextProducts = products.map((product) => {
+            if (product.id === id) {
+              return {
+                ...product,
+                quantity: product.quantity - 1,
+              };
+            } else return product;
+          });
+          setProducts(nextProducts);
+        },
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

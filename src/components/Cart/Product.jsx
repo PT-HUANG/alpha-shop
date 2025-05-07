@@ -1,4 +1,8 @@
+import { useCart } from "../../context/CartContext";
+
 export default function Product({ id, name, img, price, quantity }) {
+  const { handlePlus, handleMinus } = useCart();
+
   return (
     <div
       className="product-container col col-12"
@@ -11,6 +15,9 @@ export default function Product({ id, name, img, price, quantity }) {
         <div className="product-control-container">
           <div className="product-control">
             <button
+              onClick={() => {
+                handleMinus(id);
+              }}
               className="product-action minus"
               id={id}
               style={{
@@ -28,6 +35,9 @@ export default function Product({ id, name, img, price, quantity }) {
             </button>
             <span className="product-count">{quantity}</span>
             <button
+              onClick={() => {
+                handlePlus(id);
+              }}
               className="product-action plus"
               id={id}
               style={{

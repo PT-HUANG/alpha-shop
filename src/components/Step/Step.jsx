@@ -6,6 +6,7 @@ import Step3 from "./Step3";
 import ProgressControl from "./ProgressControl";
 import Cart from "../Cart/Cart";
 import { useFormData, useResetFormData } from "../../context/SheetContext";
+import { useCart } from "../../context/CartContext";
 
 function FormContainer({ children }) {
   return <section className="form-container col col-12">{children}</section>;
@@ -26,6 +27,7 @@ export default function Step() {
   const [stepPhase, setStepPhase] = useState(1);
   const formData = useFormData();
   const resetFormData = useResetFormData();
+  const { total } = useCart();
 
   function handleClick(e) {
     if (e.target.className.includes("next")) {
@@ -40,7 +42,7 @@ export default function Step() {
 
   function handleConsole() {
     const temp = `
-      總金額：1000元
+      總金額：${total}
       姓名： ${formData.cardName}
       卡號： ${formData.cardNumber}
       有效日期： ${formData.expiryDate}
